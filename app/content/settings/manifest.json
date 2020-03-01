@@ -1,8 +1,8 @@
 {
-  "name": "Bluise",
-  "shortName": "Bluise",
-  "description": "A Nuxt.js & Netlify CMS boilerplate.",
+  "name": "The Hawtof Family Site",
+  "shortName": "Hawtof.com",
+  "description": "The Hawtof Family Site and Blog",
   "themeColor": "#0b3765",
-  "backgroundColor": "#ffffff",
+  "backgroundColor": "#ebebeb",
   "lang": "en"
 }
