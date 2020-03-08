@@ -1,9 +1,8 @@
 <template>
-  <header class="flex items-center py-4 md:py-8 h-16">
-    <nuxt-link to="/">
+  <header class="flex items-center justify-between py-4 md:py-8 h-16">
+    <nuxt-link class="block mt-2 bg-white shadow-xl rounded-lg hover:bg-gray-200" to="/">
       <img class="h-16 p-2" :src="logo" alt="Logo" />
     </nuxt-link>
-
     <nav class="nav ml-auto">
       <ul class="flex flex-row items-center sm:mt-4 sm:pt-4 md:mt-0 md:pt-0 md:mr-4 lg:mr-8">
         <li>
@@ -16,13 +15,19 @@
             Blog
           </nuxt-link>
         </li>
-
-        <li
-          v-for="(page, index) in pages"
-          :key="index"
-          class="block font-medium px-4 py-1 md:p-2 lg:px-4"
-        >
-          <nuxt-link :to="`/${page.slug}`">{{ page.title }}</nuxt-link>
+        <li>
+          <button class="block font-medium px-4 py-1 md:p-2 lg:px-4">
+            Family
+          </button>
+          <div class="mt-2 py-2 bg-gray-100 rounded-lg shadow-xl">
+            <nuxt-link
+              class="block px-4 py-2 hover:bg-blue-500"
+              v-for="(page, index) in pages"
+              :key="index"
+              :to="`/${page.slug}`"
+              >{{ page.title }}</nuxt-link
+            >
+          </div>
         </li>
       </ul>
     </nav>
