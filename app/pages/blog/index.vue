@@ -8,7 +8,7 @@
     </div>
 
     <div class="flex flex-wrap md:-mx-4 pb-20">
-      <div v-for="(post, index) in posts" :key="index" class="w-full md:w-1/2 my-4 md:px-4">
+      <div v-for="(post, index) in posts" :key="index" class="w-full md:w-1/3 my-4 md:px-4">
         <div class="post">
           <nuxt-link :to="`/blog/${post.slug}`">
             <img
