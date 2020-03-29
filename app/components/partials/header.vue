@@ -1,6 +1,6 @@
 <template>
   <header class="flex items-center justify-between py-4 md:py-8 h-16">
-    <nuxt-link class="block mt-2 bg-white shadow-xl rounded-lg hover:bg-gray-200" to="/">
+    <nuxt-link class="block mt-4 bg-white shadow-xl rounded-lg hover:bg-gray-200" to="/">
       <img class="h-16 p-2" :src="logo" alt="Logo" />
     </nuxt-link>
     <nav class="nav ml-auto">
@@ -15,19 +15,10 @@
             Blog
           </nuxt-link>
         </li>
-        <li>
-          <button class="block font-medium px-4 py-1 md:p-2 lg:px-4">
-            Family
-          </button>
-          <div class="mt-2 py-2 bg-gray-100 rounded-lg shadow-xl">
-            <nuxt-link
-              class="block px-4 py-2 hover:bg-blue-500"
-              v-for="(page, index) in pages"
-              :key="index"
-              :to="`/${page.slug}`"
-              >{{ page.title }}</nuxt-link
-            >
-          </div>
+        <li class="relative">
+          <no-ssr placeholder="loading...">
+            <menu-dropdown></menu-dropdown>
+          </no-ssr>
         </li>
       </ul>
     </nav>
@@ -38,13 +29,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import settings from '@/content/settings/general.json';
 
-@Component
+import MenuDropdown from '@/components/partials/dropdown.vue';
+
+@Component({
+  components: {
+    MenuDropdown,
+  },
+})
 export default class Header extends Vue {
+  logo = settings.logo;
+
   get pages(): Page[] {
     return this.$store.state.pages;
   }
-
-  logo = settings.logo;
 }
 </script>
 
