@@ -13,9 +13,6 @@
       class="fixed inset-0 h-full w-full bg-black opacity-25 cursor-default"
     ></button>
     <div v-if="isOpen" class="absolute right-0 mt-2 py-2 bg-gray-100 rounded-lg shadow-xl">
-      <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white" href="google.com">Test</a>
-      <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white" href="google.com">Test</a>
-      <a class="block px-4 py-2 hover:bg-blue-500 hover:text-white" href="google.com">Test</a>
       <nuxt-link
         class="block px-4 py-2 hover:bg-blue-500 hover:text-white"
         v-for="(page, index) in pages"
@@ -33,6 +30,10 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Dropdown extends Vue {
   isOpen = false;
+
+  get pages(): Page[] {
+    return this.$store.state.pages;
+  }
 
   handleEscape(e): void {
     if (e.key === 'Esc') this.isOpen = false;

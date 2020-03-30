@@ -38,10 +38,6 @@ import MenuDropdown from '@/components/partials/dropdown.vue';
 })
 export default class Header extends Vue {
   logo = settings.logo;
-
-  get pages(): Page[] {
-    return this.$store.state.pages;
-  }
 }
 </script>
 
