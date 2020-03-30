@@ -16,9 +16,7 @@
           </nuxt-link>
         </li>
         <li class="relative">
-          <no-ssr placeholder="loading...">
-            <menu-dropdown></menu-dropdown>
-          </no-ssr>
+          <menu-dropdown></menu-dropdown>
         </li>
       </ul>
     </nav>

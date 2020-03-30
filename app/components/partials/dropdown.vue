@@ -1,5 +1,8 @@
 <template>
   <div>
+    <no-ssr>
+      <escape-handler @escapePressed="close" />
+    </no-ssr>
     <button
       @click="isOpen = !isOpen"
       class="relative z-10 block font-medium px-4 py-1 md:p-2 lg:px-4"
@@ -26,8 +29,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import EscapeHandler from '@/components/partials/escapeHandler.vue';
 
-@Component
+@Component({
+  components: {
+    EscapeHandler,
+  },
+})
 export default class Dropdown extends Vue {
   isOpen = false;
 
@@ -35,16 +43,8 @@ export default class Dropdown extends Vue {
     return this.$store.state.pages;
   }
 
-  handleEscape(e): void {
-    if (e.key === 'Esc') this.isOpen = false;
-  }
-
-  created(): void {
-    document.addEventListener('keydown', this.handleEscape);
-  }
-
-  beforeDestroy(): void {
-    document.removeEventListener('keydown', this.handleEscape);
+  close(): void {
+    this.isOpen = false;
   }
 }
 </script>
