@@ -59,7 +59,7 @@ const nuxtConfig: Configuration = {
     subFolders: false,
 
     routes: [
-      ...fg.sync(['./app/content/blog/**.json', './app/content/pages/**.json']).map(url => ({
+      ...fg.sync(['./app/content/blog/**.json', './app/content/pages/**.json']).map((url) => ({
         route: url.replace(/^.\/app\/content(\/pages)?|.json$/gi, ''),
         payload: require(url),
       })),
@@ -174,7 +174,7 @@ const nuxtConfig: Configuration = {
 
     // Split chunks
     splitChunks: {
-      layouts: true,
+      layouts: false, // temporary fix until https://github.com/nuxt/nuxt.js/pull/7139
       pages: true,
       commons: true,
     },
